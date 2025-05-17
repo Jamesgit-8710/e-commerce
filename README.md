@@ -21,6 +21,8 @@ This is a simple eCommerce web application built using React, Redux Toolkit, and
 ✅ Routing with React Router
 
 
+## Commands to run
+
 ### `npm install`
 
 Install the dependencies.
