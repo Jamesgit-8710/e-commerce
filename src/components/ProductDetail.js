@@ -10,16 +10,19 @@ const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const isInCart = cartItems.some((item) => item.id === parseInt(id));
+
   const product = useSelector((state) =>
     state.products.items.find((item) => item.id === parseInt(id))
   );
-
-  if (!product) return <p>Product not found.</p>;
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     navigate('/cart');
   };
+
+  if (!product) return <p>Product not found.</p>;
 
   return (
     <>
@@ -36,8 +39,8 @@ const ProductDetail = () => {
             ⭐ {product.rating.rate} / 5 ({product.rating.count} reviews)
           </p>
           <p className="description">{product.description}</p>
-          <button className="buy-btn" onClick={handleAddToCart}>
-            Add to Cart
+          <button className="buy-btn" onClick={handleAddToCart} disabled={isInCart}>
+            {isInCart ? 'Added' : 'Add to Cart'}
           </button>
         </div>
       </div>

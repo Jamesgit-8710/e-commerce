@@ -88,3 +88,8 @@
 .buy-btn:hover {
     background-color: #f08804;
 }
+
+.buy-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

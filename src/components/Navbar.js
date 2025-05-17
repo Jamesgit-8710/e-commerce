@@ -5,18 +5,17 @@ import { useSelector } from 'react-redux';
 import '../styles/navbar.css';
 
 const Navbar = () => {
-  const cartItems = useSelector((state) => state.cart.cartItems);
+    const cartItems = useSelector((state) => state.cart.cartItems);
+    const totalCount = cartItems.length;
 
-  const totalQty = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-
-  return (
-    <nav className="navbar">
-      <Link to="/" className="logo">🛍️ ShopKaro</Link>
-      <Link to="/cart" className="cart-link">
-        🛒 Cart ({totalQty})
-      </Link>
-    </nav>
-  );
+    return (
+        <nav className="navbar">
+            <Link to="/" className="logo">🛍️ ShopKaro</Link>
+            <Link to="/cart" className="cart-link">
+                🛒 Cart ({totalCount})
+            </Link>
+        </nav>
+    );
 };
 
 export default Navbar;
